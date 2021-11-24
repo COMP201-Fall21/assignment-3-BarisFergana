@@ -7,7 +7,30 @@
 // you can use char type for each cell value or bool from <stdbool.h>
 char **read_from_file(const char *filename)
 {
-    
+	int num_iterations, num_rows, num_columns;	;
+	FILE *f = fopen(filename,"r");
+    	if(f == NULL){
+		printf("error!, file cannot be opened");
+		exit(1);	
+	}
+	fscanf(f,"[+\n]",num_iterations);
+	fscanf(f,"[+\n]",num_rows);
+	fscanf(f,"[+\n]",num_columns);
+	int i,j;
+	char** arr = (char**)malloc(num_rows*sizeof(char*));
+	for( i = 0; i < num_rows; i++){
+		arr[i] = (char*)malloc(num_columns*sizeof(char));
+	}
+	
+	for( i = 0; i < num_rows; i++){
+		for( j = 0; j < num_columns; j++){
+			arr[i][j] = fgetc(f) 
+		}
+	}
+	
+
+
+	return arr;
 }
 
 // given a game step return the next step applying game rules
